@@ -15,14 +15,22 @@ print(X_test.shape)
 
 print(X_train[0])
 
-# print(y_train.shape)
-# print(y_train)
+print(y_train.shape)
+print(y_train)
 
-# plt.figure()
-# plt.scatter(X[ :, 0], X[ :, 1], c=y, cmap=cmap, edgecolor='k', s=20)
-# plt.show()
+plt.figure()
+plt.scatter(X[ :, 0], X[ :, 1], c=y, cmap=cmap, edgecolor='k', s=20)
+plt.show()
 
 a = [1, 2, 1, 4, 5, 4, 3, 2, 1, 2, 3, 3, 4, 5, 4, 3, 2, 1, 2, 3]
 from collections import Counter
 most_common = Counter(a).most_common(1)
 print(most_common[0])
+
+from knn import KNN
+vlf = KNN(k=3)
+vlf.fit(X_train, y_train)
+predictions = vlf.predict(X_test)
+
+acc = np.sum(predictions == y_test) / len(y_test)
+print("KNN classification accuracy: ", acc)
