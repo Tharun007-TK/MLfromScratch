@@ -12,3 +12,14 @@ plt.show()
 
 print(X_train.shape)
 print(y_train.shape)
+
+from ml_algorithms.linear_regression import LinearRegression
+
+model = LinearRegression(learning_rate=0.01, n_iters=1000)
+model.fit(X_train, y_train)
+predictions = model.predict(X_test)
+
+plt.scatter(X_test, y_test, color="b", label="Actual")
+plt.scatter(X_test, predictions, color="r", label="Predicted")
+plt.legend()
+plt.show()
